@@ -1,19 +1,24 @@
 const form = document.querySelector(".js-form"),
   input = form.querySelector("input"),
-  greeting = form.querySelector(".js-greetings");
+  greeting = document.querySelector(".js-greetings");
 
 const USER_LS = "currentUser",
   SHOWING_CN = "showing";
 
+function saveName(text) {
+  localStorage.setItem(USER_LS, text);
+}
+
 function handleSubmit(event) {
-  event.preventDefault();
+  event.preventDefault(); // Prevent the page to redirect.
   const currentValue = input.value;
   paintGreeting(currentValue);
+  saveName(currentValue);
 }
 
 function askForName() {
-  form.classList.add(SHOWING_CN);
-  form.addEventListener("submit", handleSubmit);
+  form.classList.add(SHOWING_CN); // Pop the prompt
+  form.addEventListener("submit", handleSubmit); // When submitted, call the handle.
 }
 
 function paintGreeting(text) {
@@ -22,7 +27,7 @@ function paintGreeting(text) {
   greeting.innerText = `Hello ${text}`;
 }
 
-function loadname() {
+function loadName() {
   const currentUser = localStorage.getItem(USER_LS);
   if (currentUser === null) {
     askForName();
@@ -33,4 +38,4 @@ function loadname() {
 
 function init() {}
 
-loadname();
+loadName();

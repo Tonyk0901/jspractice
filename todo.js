@@ -8,7 +8,7 @@ function saveToDos() {
   localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
 }
 
-function paintGreeting(text) {
+function paintToDo(text) {
   const li = document.createElement("li");
   const delBtn = document.createElement("button");
   const span = document.createElement("span");
@@ -30,16 +30,19 @@ function paintGreeting(text) {
 function handleSubmit(event) {
   event.preventDefault();
   const currentValue = toDoInput.value;
-  paintGreeting(currentValue);
+  paintToDo(currentValue);
   toDoInput.value = "";
+}
+
+function writeList(toDoObjs) {
+  paintToDo(toDoObjs.text);
 }
 
 function loadToDos() {
   const loadedToDos = localStorage.getItem(TODOS_LS);
   if (loadedToDos !== null) {
-    console.log(loadedToDos);
     const parsedToDos = JSON.parse(loadedToDos);
-    console.log(loadedToDos);
+    parsedToDos.forEach(writeList);
   }
 }
 

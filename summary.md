@@ -99,6 +99,46 @@ Practice Vanilla JS by creating To do list.
   });
   filter works similar to the forEach. Filter operates the given function to each element of the array and gives you only the elements that the function returns True. Thus the given function should return boolean.
 
+## 3.8 Background Image
+
+- In this section, we implements functions to bring up random background images.
+
+- Math.random();
+  returns a random floating number between 0(inclusive) and 1(exclusive).
+  Math.floor(3.9);
+  returns a number that discards its floating parts. Thus above code returns 3.
+  Combining above two, we can generate a random integer of a selected range by,
+  Math.floor(Math.random()\*3);
+  This returns either 0, 1, or 2.
+
+- creating image objects example.
+  var myImage = new Image(100, 200);
+  myImage.src = 'picture.jpg';  
+  document.body.appendChild(myImage);
+  100 is the width and 200 is the height.
+
+- .bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  }
+  css z-index property specifies the stack order of an element. For example, -1 places an element in the very bottom like a background.
+  https://www.w3schools.com/cssref/pr_pos_z-index.asp
+
+- @keyframes mymove {
+  from {top: 0px;}
+  to {top: 200px;}
+  }
+  @keyframes is used to specify the animation code. The sample code specifies an animation that moves an element from top 0px to 200 px.
+  https://www.w3schools.com/cssref/css3_pr_animation-keyframes.asp
+
+- animation: fadeIn 0.5s linear;
+  linear keyword means that the speed is the same throughout the entire animation.
+  https://www.w3schools.com/cssref/css3_pr_animation-timing-function.asp
+
 ## Difference between let, const, and var.
 
 https://dev.to/sarah_chima/var-let-and-const--whats-the-difference-69e

@@ -63,7 +63,7 @@ Practice Vanilla JS by creating To do list.
   toDos.push(toDoObj);
   Make the obj and push this into the todo array.
 - `li.id = newId;` sets the id for each element in the list.
-- localStorage, however, only stores the string. Whatever it takes in, it converts into a string. Thus, if we try to insert an object, local storage will turn it into some weird stuff. Thus, if you want to store the object, you gotta use some pre conversion method.
+- localStorage, however, only stores the "string". Whatever it takes in, it converts into a string. Thus, if we try to insert an object, local storage will turn it into some weird stuff. Thus, if you want to store the object, you gotta use some pre conversion method.
   `localStorage.setItem(TODOS_LS, JSON.stringify(toDos));` does the trick we wanted.
 
 - const loadedToDos = localStorage.getItem(TODOS_LS);
@@ -72,4 +72,38 @@ Practice Vanilla JS by creating To do list.
   const parsedToDos = JSON.parse(loadedToDos);
   }
   }
-  The problem is that now the laoded Todos are string. So if you want the object, then you gotta turn it from string to object again using the command `const parsedToDos = JSON.parse(loadedToDos);`
+  The problem is that now the loaded Todos are string. So if you want the object, then you gotta turn it from string to object again using the command `const parsedToDos = JSON.parse(loadedToDos);`
+
+- parsedToDos.forEach(function (toDo) {
+  paintToDo(toDo.text);
+  });
+  forEach opperates whatever function inside the parenthesis on every elements inside the array.
+  Also, you can even create a function inside the parenthesis. in the example code, toDo is going to be the each element in the array. in our case, toDo is going to be the toDoObj which contains two keys(text and id).
+
+## 3.7 To do list part 2.
+
+- In this part, we implemeneted a delete button for the toDoList.
+
+- delBtn.addEventListener("click", deleteToDo);
+  you add event listener to "each element"
+
+- console.dir gives you the list of the properties of the java script object. The difference between this and console.log is that console.log returns the object in its string representation.
+- const li = event.target.parentNode;
+  above code gives you the node object.
+
+- toDoList.removeChild(li);
+  node object has? has the method remove child that removes the targeted child node (li) from its parentNode. (toDoList).
+
+- const cleanedToDos = toDos.filter(function (toDo) {
+  return toDo.id !== parseInt(li.id);
+  });
+  filter works similar to the forEach. Filter operates the given function to each element of the array and gives you only the elements that the function returns True. Thus the given function should return boolean.
+
+## Difference between let, const, and var.
+
+https://dev.to/sarah_chima/var-let-and-const--whats-the-difference-69e
+
+var can be both globally and locally scoped. However, both let and const are block scoped.
+Also, var can be updated or re-declared, while neither let and const can be re-declared and only let can be updated.
+
+Thus,

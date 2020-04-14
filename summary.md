@@ -139,6 +139,37 @@ Practice Vanilla JS by creating To do list.
   linear keyword means that the speed is the same throughout the entire animation.
   https://www.w3schools.com/cssref/css3_pr_animation-timing-function.asp
 
+## 3.9 Getting geo location.
+
+- navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
+  above code asks the user if location info can be retrieved. .getCurrentPosition takes two argument function, first one for the sucess case and the second one for the failure case when the user clicks no.
+
+- const coordsObj = {
+  latitude,
+  longitude,
+  };
+  This is the case when the key name is going to be the same as the passed variable name. Equivalent to,
+  const coordsObj = {
+  latitude : latitude,
+  longitude : longitude,
+  };
+
+## 3.10 Getting weather based on geo locaiton.
+
+- fetch('http://example.com/movies.json')
+  .then((response) => {
+  return response.json();
+  })
+  .then((data) => {
+  console.log(data);
+  });
+  Basic format to send request to API and receive response. Use fetch and then. Then assures the code does not proceed until the response is received.
+
+- Some notation about the arrow function (ES6)
+  (param1, param2, …, paramN) => { statements }
+  (param1, param2, …, paramN) => expression
+  // equivalent to: => { return expression; }
+
 ## Difference between let, const, and var.
 
 https://dev.to/sarah_chima/var-let-and-const--whats-the-difference-69e
